@@ -1,0 +1,25 @@
+@font-face {
+    font-family: mobiloFont-regular;
+    src: url(Mobilo-Regular.ttf);
+}
+@font-face {
+    font-family: mobiloFont-light;
+    src: url(Mobilo-Light.ttf);
+}
+@font-face {
+    font-family: mobiloFont-medium;
+    src: url(Mobilo-Medium.ttf);
+}
+
+html {
+  background-color: #F2F6FA;
+  font-family: mobiloFont-light;
+}
+
+.bg-white {
+  background-color: #FAFAFA;
+}
+
+table {
+  margin: 0 auto;
+}
