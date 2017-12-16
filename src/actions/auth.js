@@ -21,15 +21,15 @@ export const login = (pseudo, password) =>  {
     });
     const user = new CognitoUser({Username: pseudo, Pool: userPool});
     const authentificationData = {Username: pseudo, Password: password};
+    console.log(authentificationData);
     const authentificationDetails = new AuthenticationDetails(authentificationData);
 
     new Promise((resolve, reject) =>
       user.authenticateUser(authentificationDetails, {
         onSuccess: result => resolve(),
-        onFailure: err => reject(err),
-        newPasswordRequired: function(userAttributes, requiredAttributes){
-          user.completeNewPasswordChallenge('admin2', userAttributes, this);
-          cognitoCredentials.clearCachedId();
+        onFailure: err => { 
+          reject(err);
+          console.log(err);
         }
       })
     ).then(function(){
