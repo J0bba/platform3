@@ -1,6 +1,6 @@
 export default {
     apiGateway: {
-        URL: "https://1c4pcy5o3i.execute-api.eu-west-2.amazonaws.com/prod",
+        URL: "https://1c4pcy5o3i.execute-api.eu-west-1.amazonaws.com/prod",
         REGION: "eu-west-1"
     },
     cognito: {
