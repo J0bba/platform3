@@ -51,6 +51,7 @@ export async function authUser() {
     AWS.config.credentials &&
     Date.now() < AWS.config.credentials.expireTime - 60000
   ) {
+    console.log("dans le return");
     return true;
   }
 
@@ -58,6 +59,7 @@ export async function authUser() {
   console.log(currentUser);
 
   if (currentUser === null) {
+    console.log("USER EST NULL");
     return false;
   }
 
