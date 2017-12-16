@@ -11,6 +11,7 @@ export async function invokeApig({
   body
 }) {
   if (!await authUser()) {
+    console.log("USER IS NOT LOGGED IN");
     throw new Error("User is not logged in");
   }
   console.log(AWS.config.credentials);
@@ -54,12 +55,14 @@ export async function authUser() {
   }
 
   const currentUser = getCurrentUser();
+  console.log(currentUser);
 
   if (currentUser === null) {
     return false;
   }
 
   const userToken = await getUserToken(currentUser);
+  console.log(userToken);
 
   await getAwsCredentials(userToken);
 
