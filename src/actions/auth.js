@@ -10,6 +10,9 @@ import { getCurrentUser } from "../libs/awsLib"
 
 export const login = (pseudo, password) =>  {
   return function(dispatch) {
+    if ( AWS.config.credentials && AWS.config.credentials.clearCachedId ) {
+      AWS.config.credentials.clearCachedId()
+    }
     let name = 'login'
     action_generator_aws.generate(name);
 
