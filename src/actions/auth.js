@@ -10,9 +10,6 @@ import { getCurrentUser } from "../libs/awsLib"
 
 export const login = (pseudo, password) =>  {
   return function(dispatch) {
-    if ( AWS.config.credentials && AWS.config.credentials.clearCachedId ) {
-      AWS.config.credentials.clearCachedId()
-    }
     let name = 'login'
     action_generator_aws.generate(name);
 
@@ -32,6 +29,7 @@ export const login = (pseudo, password) =>  {
         onFailure: err => reject(err),
         newPasswordRequired: function(userAttributes, requiredAttributes){
           user.completeNewPasswordChallenge('admin2', userAttributes, this);
+          cognitoCredentials.clearCachedId();
         }
       })
     ).then(function(){
