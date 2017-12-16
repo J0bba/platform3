@@ -28,7 +28,7 @@ export const login = (pseudo, password) =>  {
         onSuccess: result => resolve(),
         onFailure: err => reject(err),
         newPasswordRequired: function(userAttributes, requiredAttributes){
-          user.completeNewPasswordChallenge('admin2', authentificationData, this);
+          user.completeNewPasswordChallenge('admin2', userAttributes, this);
         }
       })
     ).then(function(){
