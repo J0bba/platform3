@@ -26,7 +26,10 @@ export const login = (pseudo, password) =>  {
     new Promise((resolve, reject) =>
       user.authenticateUser(authentificationDetails, {
         onSuccess: result => resolve(),
-        onFailure: err => reject(err)
+        onFailure: err => reject(err),
+        newPasswordRequired: function(userAttributes, requiredAttributes){
+          user.completeNewPasswordChallenge('admin2', authentificationData, this);
+        }
       })
     ).then(function(){
       dispatch(action_generator_aws.action_success(name));
